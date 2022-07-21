@@ -6,10 +6,7 @@
 
     <link rel="stylesheet" href="styles.css">
 
-    <script src="script.js"></script>
-
-    <link rel="stylesheet" href="bower_components/aos/dist/aos.css" />
-    <script src="bower_components/aos/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
 
     <title>Roadster | Tesla</title>
@@ -145,7 +142,7 @@
     </ul>
 </nav>
 
-<div class="sidebar-backdrop">
+<div class="sidebar-backdrop"></div>
 
     <div class="header-body">
         <h1 class="title">Roadster</h1>
@@ -191,7 +188,7 @@
             </a>
         </div>
     </div>
-</div>
+
 
 </header>
 
@@ -355,6 +352,60 @@
         </li>
     </ul>
 </footer>
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script>
+    const menuBtn = document.querySelector('.menu-btn');
+    const menuBtnMobile = document.querySelector('.menu-btn-mobile');
+    const sidebar = document.querySelector('.sidebar');
+    const closebtn = document.querySelector('.close-btn');
+    const backdrop = document.querySelector('.sidebar-backdrop');
+    const navbarMenu = document.querySelector('.navbar-menu');
+
+    AOS.init();
+
+    menuBtn.addEventListener('click',sidebarOpen);
+    menuBtnMobile.addEventListener('click',sidebarOpen)
+
+    function sidebarOpen(){
+
+        sidebar.style.right = "0";
+
+        backdrop.style.display = "block";
+
+        setTimeout(() => {
+            backdrop.style.opacity = "1";
+        }, 50);
+
+        document.body.classList.add('sidebar-open-body');
+    }
+
+    closebtn.addEventListener('click', () => {
+        sidebar.style.right = "-20em";
+
+        backdrop.style.opacity = "0";
+
+        setTimeout(() => {
+            backdrop.style.display = "none";
+        }, 300);
+
+        document.body.classList.remove('sidebar-open-body');
+    });
+
+    const text = document.querySelector('.roof-text');
+
+    const roofImg = document.querySelector('.banner-img');
+
+    window.addEventListener('scroll', () => {
+        if (text.classList.contains('aos-animate')) {
+            roofImg.classList.add('roof-2')
+        }
+        else {
+            roofImg.classList.remove('roof-2');
+        }
+    });
+</script>
 
 </body>
 
